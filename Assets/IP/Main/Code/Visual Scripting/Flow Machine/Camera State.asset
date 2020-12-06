@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1893448595, guid: a040fb66244a7f54289914d98ea4ef7d, type: 3}
+  m_Name: Camera State
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"graph":{"variables":{"collection":{"$content":[],"$version":"A"},"$version":"A"},"controlInputDefinitions":[],"controlOutputDefinitions":[],"valueInputDefinitions":[],"valueOutputDefinitions":[],"title":null,"summary":null,"pan":{"x":142.7735,"y":82.4785},"zoom":0.9,"elements":[{"argumentCount":0,"coroutine":false,"defaultValues":{"target":null,"name":{"$content":"PostProcessEvent","$type":"System.String"}},"position":{"x":-259.0,"y":20.0},"guid":"ef0f46d8-6dad-46cd-89cd-00bf74b14338","$version":"A","$type":"Bolt.CustomEvent","$id":"9"},{"member":{"name":"deltaTime","parameterTypes":null,"targetType":"UnityEngine.Time","targetTypeName":"UnityEngine.Time","$version":"A"},"defaultValues":{},"position":{"x":-262.0,"y":132.0},"guid":"3c50d2cc-4ae3-4f49-b621-70aad613cfb1","$version":"A","$type":"Bolt.GetMember","$id":"11"},{"chainable":false,"member":{"name":"Clamp","parameterTypes":["System.Single","System.Single","System.Single"],"targetType":"UnityEngine.Mathf","targetTypeName":"UnityEngine.Mathf","$version":"A"},"defaultValues":{"%value":{"$content":0.0,"$type":"System.Single"},"%min":{"$content":0.0,"$type":"System.Single"},"%max":{"$content":5.0,"$type":"System.Single"}},"position":{"x":3.0,"y":23.0},"guid":"8f8560b2-c34b-42a3-ad2a-7271ca1e5846","$version":"A","$type":"Bolt.InvokeMember","$id":"14"},{"chainable":false,"member":{"name":"SetToneGammaValue","parameterTypes":["System.Single"],"targetType":"UIModule","targetTypeName":"UIModule","$version":"A"},"defaultValues":{"target":null,"%amount":{"$content":0.0,"$type":"System.Single"}},"position":{"x":196.0,"y":52.0},"guid":"cb4fa2eb-b77e-46fe-a4c8-f6b93e3464c0","$version":"A","$type":"Bolt.InvokeMember"},{"sourceUnit":{"$ref":"9"},"sourceKey":"trigger","destinationUnit":{"$ref":"14"},"destinationKey":"enter","guid":"144b5f08-30a0-41e0-b764-bff687988b16","$type":"Bolt.ControlConnection"},{"sourceUnit":{"$ref":"11"},"sourceKey":"value","destinationUnit":{"$ref":"14"},"destinationKey":"%value","guid":"357a5896-e6e6-40a6-bd9d-5b1ae0774fa5","$type":"Bolt.ValueConnection"}],"$version":"A"}}'
+    _objectReferences: []

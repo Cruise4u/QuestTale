@@ -1,2 +1,1 @@
-# QuestTale
-Isometric Action-RPG
+# Knight Tale - Action-RPG made in Unity

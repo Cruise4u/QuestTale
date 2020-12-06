@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82d93086476ead4469d29ab6d82310b6, type: 3}
+  m_Name: Brawler Spellbook
+  m_EditorClassIdentifier: 
+  abilityList:
+  - {fileID: 11400000, guid: f46929baf47c9124c8a01a1f0aa7e0b5, type: 2}
+  - {fileID: 11400000, guid: 09b9f6391c7c5ca499e39d1f33afd8a4, type: 2}
