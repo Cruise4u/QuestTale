@@ -854,7 +854,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 873ae5b27aa45d64fb8df0a71ec74243, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCamera: {fileID: 2104240350512701948}
 --- !u!114 &6181921612731311991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -867,9 +866,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79764e2f54b9ebf4b9bc555e62ddb778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  caster: {fileID: 0}
-  indicatorController: {fileID: 0}
-  indicatorCollider: {fileID: 0}
 --- !u!114 &6181921612731311989
 MonoBehaviour:
   m_ObjectHideFlags: 0

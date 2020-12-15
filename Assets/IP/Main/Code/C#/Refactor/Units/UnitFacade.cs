@@ -3,11 +3,13 @@ using UnityEngine;
 
 public class UnitFacade : MonoBehaviour
 {
+    public CameraManager cameraManager;
     public StatsData unitStatsData;
     public UnitStats myStats;
     public UnitMovementAndRotation unitMovement;
     public UnitActions unitActions;
     public UnitTarget unitTarget;
+
 
     public void SetupUnit()
     {

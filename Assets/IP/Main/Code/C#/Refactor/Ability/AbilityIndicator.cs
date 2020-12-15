@@ -1,61 +1,77 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class AbilityIndicator : MonoBehaviour
+public abstract class AbilityIndicator : ScriptableObject
 {
+    public GameObject indicatorPrefab;
     public GameObject caster;
-    public GameObject indicatorController;
 
-    public void SetupIndicators()
+    public virtual void SetIndicatorPosition(GameObject indicator)
     {
-        caster = gameObject;
-        GetChildObjectByTag("Indicator");
+
     }
 
-    public void GetChildObjectByTag(string tag)
+    public virtual void SetIndicatorDirection(GameObject indicator,Camera playerCamera)
     {
-        int childNumber = caster.transform.childCount;
-        Debug.Log(childNumber);
-        GameObject[] childObjects = new GameObject[childNumber];
-        for (int i = 0; i < childNumber; i++)
-        {
-            var childTransform = caster.transform.GetChild(i);
-            childObjects[i] = childTransform.gameObject;
-            if (childObjects[i].CompareTag(tag))
-            {
-                indicatorController = childObjects[i];
-            }
-        }
+
     }
 
-    public void ToggleIndicator()
+    public virtual void SetIndicatorRotation(GameObject indicator,Vector3 hitPosition)
     {
-        if (indicatorController.activeInHierarchy == true)
-        {
-            indicatorController.SetActive(false);
-        }
-        else
-        {
-            indicatorController.SetActive(true);
-        }
+
     }
 
-    // Geometric functions for controlling the indicator direciton/position/etc.
-    public void SetIndicatorDirection(Camera camera)
+    public virtual void ToggleIndicator(GameObject indicator)
+    {
+        if(indicator == true)
+        {
+            indicator.SetActive(false);
+        }
+        else if(indicator == false)
+        {
+            indicator.SetActive(true);
+        }
+    }
+}
+
+[CreateAssetMenu(menuName = "Ability/Indicators/Cone")]
+public class ConeIndicator : AbilityIndicator
+{
+    public AbilityIndicator CreateIndicator()
+    {
+        var cone = CreateInstance<ConeIndicator>();
+        return cone;
+    }
+
+    public override void SetIndicatorPosition(GameObject indicator)
+    {
+        indicator.transform.SetParent(caster.transform);
+        indicator.transform.localPosition = Vector3.zero;
+    }
+
+    public override void SetIndicatorDirection(GameObject indicator,Camera playerCamera)
     {
         RaycastHit hit;
-        Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+        Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit, 100.0f))
         {
             Vector3 indicatorPosition = new Vector3(hit.point.x, 0.0f, hit.point.z);
-            SetIndicatorPosition(caster.transform.position, indicatorPosition);
+            SetIndicatorRotation(indicator,indicatorPosition);
         }
     }
 
-    public void SetIndicatorPosition(Vector3 basePoint, Vector3 hitPoint)
+    public override void SetIndicatorRotation(GameObject indicator,Vector3 hitPosition)
     {
-        Vector3 normalizedPoint = (hitPoint - basePoint).normalized;
-        indicatorController.transform.rotation = GetDirectionalRotation(normalizedPoint);
+        Vector3 normalizedPoint = (hitPosition - caster.transform.position).normalized;
+        indicator.transform.rotation = GetRotation(normalizedPoint);
+    }
+
+    public Quaternion GetRotation(Vector3 normalizedVector)
+    {
+        float angle = GetAngle(normalizedVector);
+        Quaternion newRotation = Quaternion.Euler(0.0f, angle, 0.0f);
+        return newRotation;
     }
 
     public float GetAngle(Vector3 point)
@@ -66,13 +82,6 @@ public class AbilityIndicator : MonoBehaviour
             angle += 360f;
         }
         return angle;
-    }
-
-    public Quaternion GetDirectionalRotation(Vector3 normalizedVector)
-    {
-        float angle = GetAngle(normalizedVector);
-        Quaternion newRotation = Quaternion.Euler(0.0f, angle, 0.0f);
-        return newRotation;
     }
 
 }

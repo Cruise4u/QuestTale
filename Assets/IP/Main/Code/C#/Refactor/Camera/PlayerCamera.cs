@@ -4,25 +4,27 @@ using UnityEngine;
 public class PlayerCamera : MonoBehaviour
 {
     public Camera playerCamera;
+    GameObject player;
 
     public void Start()
     {
-        GetCameraComponentByTag("Camera");
+        player = GameObject.FindGameObjectWithTag("player");
+        playerCamera = gameObject.GetComponent<Camera>();
     }
 
-    public void GetCameraComponentByTag(string tag)
-    {
-        int numberOfChilds = gameObject.transform.childCount;
-        GameObject[] childObjects = new GameObject[numberOfChilds];
-        for(int i = 0; i < childObjects.Length; i++)
-        {
-            childObjects[i] = gameObject.transform.GetChild(i).gameObject;
-            if (childObjects[i].CompareTag(tag))
-            {
-                playerCamera = childObjects[i].gameObject.GetComponent<Camera>();
-            }
-        }
-    }
+    //public void GetCameraComponentByTag(string tag)
+    //{
+    //    int numberOfChilds = player.transform.childCount;
+    //    GameObject[] childObjects = new GameObject[numberOfChilds];
+    //    for(int i = 0; i < childObjects.Length; i++)
+    //    {
+    //        childObjects[i] = player.transform.GetChild(i).gameObject;
+    //        if (childObjects[i].CompareTag(tag))
+    //        {
+    //            playerCamera = childObjects[i].gameObject.GetComponent<Camera>();
+    //        }
+    //    }
+    //}
 
     public Ray GetCameraRay()
     {

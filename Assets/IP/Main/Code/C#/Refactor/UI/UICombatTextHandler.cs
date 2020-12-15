@@ -21,11 +21,6 @@ public class UICombatTextHandler : MonoBehaviour
         initialPosition = textObject.transform.position;
     }
 
-    public void Update()
-    {
-        
-    }
-
     public void DisplayText(string text)
     {
         if(textObject.activeSelf != true)

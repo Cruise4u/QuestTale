@@ -1,4 +1,28 @@
 ﻿using System;
+using UnityEngine;
+
+
+
+public class MathLibrary
+{
+	public Quaternion GetRotation(Vector3 normalizedVector)
+	{
+		float angle = GetAngle(normalizedVector);
+		Quaternion newRotation = Quaternion.Euler(0.0f, angle, 0.0f);
+		return newRotation;
+	}
+
+	public float GetAngle(Vector3 point)
+	{
+		float angle = (Mathf.Atan2(point.x, point.z) / Mathf.PI) * 180f;
+		if (angle < 0.0f)
+		{
+			angle += 360f;
+		}
+		return angle;
+	}
+}
+
 
 public class GeometryLibrary
 {

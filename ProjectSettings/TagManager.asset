@@ -9,6 +9,7 @@ TagManager:
   - player
   - Indicator
   - Camera
+  - Button
   layers:
   - Default
   - TransparentFX
